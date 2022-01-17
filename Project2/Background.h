@@ -3,6 +3,7 @@
 #include<string>
 
 
+
 class BitMap;
 
 enum BackImage
@@ -14,6 +15,7 @@ enum BackImage
 	BackImage_INTERFACE_1,
 	BackImage_INTERFACE_2,
 	BackImage_INTERFACE_3,
+	BackImage_GOAL,
 
 };
 
@@ -23,13 +25,14 @@ class Background
 private:
 	BitMap* m_listImage;
 	float m_time;
-	int MoveBackground;
 	int MovePlayer;
 	
 
 public:
 	void Init(BitMap* listimage);
 	void Draw(HDC hdc, int height, int width);
-	void Update(float time);
+	int Update(float time);
+
+	void Reset();
 };
 

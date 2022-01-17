@@ -30,6 +30,9 @@ public:
 	void Init(BitMap* listimage);
 	void Draw(HDC hdc, int height, int width);
 	void Update(float time);
+	void Reset();
+
+	void Jamp(float time);
 
 };
 

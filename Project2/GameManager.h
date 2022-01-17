@@ -1,6 +1,7 @@
 #pragma once
 //#include <windows.h>
 #include "MainMenu.h"
+#include "PlayGame.h"
 #include"BitMapManager.h"
 
 
@@ -18,11 +19,9 @@ private:
 	MainMenu m_Main;
 	BitMap* m_listImage;
 	HDC m_BackDC;
-<<<<<<< HEAD
+
 	PlayGame m_playGame;
 
-=======
->>>>>>> 4aeb8e3c8212f80ddb854419eaa85ac7a8f2a9ba
 
 	int height;
 	int width;
@@ -53,12 +52,11 @@ public:
 
 
 	BitMap* SetMainMenu();
-<<<<<<< HEAD
+
 	BitMap* SetPlayGame();
 
 	void SetPlayGameImage();
-=======
->>>>>>> 4aeb8e3c8212f80ddb854419eaa85ac7a8f2a9ba
+
 	
 };
 

@@ -2,6 +2,7 @@
 
 #include"Character.h"
 #include"Background.h"
+#include "GameObject.h"
 
 
 class PlayGame
@@ -10,12 +11,18 @@ class PlayGame
 private:
 	Character m_Character;
 	Background m_Background;
+	GameObject m_GameObject;
+
+	int MovePlayer;
+	bool playerLive;
 
 
 public:
-	void Init(BitMap* BackIamge, BitMap* CharImage);
+	void Init(BitMap* BackIamge, BitMap* CharImage, BitMap* GMImage);
 	void Draw(HDC hdc, int height, int width);
-	void Update(float time);
+	bool Update(float time);
+
+	void Reset();
 
 };
 

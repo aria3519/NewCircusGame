@@ -68,7 +68,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
                 // 업데이트(elapsed),
                 // 드로우(elapsed),
                
-                GameMgr->Update(elapsed,msg.wParam);
+                GameMgr->Update(elapsed);
                 GameMgr->Draw();
                 
             }

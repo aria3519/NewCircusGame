@@ -25,17 +25,33 @@ void Character::Update(float time)
 	m_time += time;
 	if (0.02f <= m_time)
 	{
+		m_time = 0;
 		if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
 		{
 			MovingPlayer++;
 		}
 		if (GetAsyncKeyState(VK_UP) & 0x8000)
 		{
-			if (UsingJamp == false)
-			{
-				PlayerY -= 66 * m_time;
-			}
+			Jamp(time);
 		}
 	}
+}
 
+void Character::Reset()
+{
+	PlayerY = 0;
+}
+
+void Character::Jamp(float time)
+{
+	/*if (!UsingJamp)
+	{
+		UsingJamp = true;
+		PlayerY -= 10 * m_time;
+	}
+	else
+		UsingJamp = false;*/
+
+
+	PlayerY -= 66;
 }

@@ -10,12 +10,10 @@ void GameManager::Init(HWND hWnd)
 	m_hdc = GetDC(m_hWnd);
 	m_listImage = BitMapManager::GetInstance()->Init(m_hdc); // 모든 리소스 파일 로드 
 	m_Main.Init(SetMainMenu()); // 메인메뉴 셋 리소스 
-<<<<<<< HEAD
 	SetPlayGameImage(); // playgame image set
 	
 	
-=======
->>>>>>> 4aeb8e3c8212f80ddb854419eaa85ac7a8f2a9ba
+
 
 	RECT windowRect;
 	GetWindowRect(m_hWnd, &windowRect);
@@ -33,14 +31,14 @@ void GameManager::Update(float time)
 	switch (playing)
 	{
 	case false: // 메인 메뉴
-		m_Main.Update(time);
+		if (m_Main.Update(time) == -1)playing = true;
 		break;
 	case true: // 게임 플레이 
-<<<<<<< HEAD
-		m_playGame.Update(time);
-=======
-
->>>>>>> 4aeb8e3c8212f80ddb854419eaa85ac7a8f2a9ba
+		if (!m_playGame.Update(time))
+		{
+			playing = false;
+			m_playGame.Reset();
+		}
 		break;
 	}
 }
@@ -56,14 +54,10 @@ void GameManager::Draw()
 	switch (playing)
 	{
 	case false: // 메인 메뉴
-		m_Main.Draw(m_BackDC,height, width);
+		m_Main.Draw(m_BackDC, height, width);
 		break;
 	case true: // 게임 플레이 
-<<<<<<< HEAD
 		m_playGame.Draw(m_BackDC, height, width);
-=======
-
->>>>>>> 4aeb8e3c8212f80ddb854419eaa85ac7a8f2a9ba
 		break;
 	}
 
@@ -124,7 +118,7 @@ BitMap* GameManager::SetMainMenu()
 }
 
 
-<<<<<<< HEAD
+
 void GameManager::SetPlayGameImage()
 {
 	// back 0~3 4
@@ -132,6 +126,7 @@ void GameManager::SetPlayGameImage()
 	int num = 0;
 	BitMap* backList = new BitMap[10];
 	BitMap* charList = new BitMap[10];
+	BitMap* GMList = new BitMap[10];
 	// back 0~3 
 	for (int i = IMAGE_BACK_1; IMAGE_BACK_4 >= i; i++)
 	{
@@ -144,6 +139,10 @@ void GameManager::SetPlayGameImage()
 		backList[num] = m_listImage[i];
 		num++;
 	}
+	// back goal 1
+	backList[num] = m_listImage[IMAGE_GOAL];
+
+
 	num = 0;
 	// character 19~24
 	for (int i = IMAGE_PLAYER_1; IMAGE_PLAYER_6 >= i; i++)
@@ -151,11 +150,30 @@ void GameManager::SetPlayGameImage()
 		charList[num] = m_listImage[i];
 		num++;
 	}
-	m_playGame.Init(backList, charList);
+
+
+
+	// GameObject 6~7 2 , 12~13 2 ,26~29 4
+	num = 0;
+	for (int i = IMAGE_FIRE_1; IMAGE_FIRE_2 >= i; i++)
+	{
+		GMList[num] = m_listImage[i];
+		num++;
+	}
+	for (int i = IMAGE_LITTLERING_1; IMAGE_LITTLERING_2 >= i; i++)
+	{
+		GMList[num] = m_listImage[i];
+		num++;
+	}
+	for (int i = IMAGE_RING_1; IMAGE_RING_4 >= i; i++)
+	{
+		GMList[num] = m_listImage[i];
+		num++;
+	}
+	m_playGame.Init(backList, charList, GMList);
 	
 }
 
 
 
-=======
->>>>>>> 4aeb8e3c8212f80ddb854419eaa85ac7a8f2a9ba
+
