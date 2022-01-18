@@ -6,6 +6,7 @@
 
 void PlayGame::Init(BitMap* BackIamge, BitMap* CharImage, BitMap* GMImage)
 {
+	playerLive = true;
 	m_Character.Init(CharImage);
 	m_Background.Init(BackIamge);
 	m_GameObject.init(GMImage);
@@ -24,11 +25,11 @@ bool PlayGame::Update(float time)
 {
 	if (playerLive)
 	{
-		MovePlayer = m_Background.Update(time);
-		m_Character.Update(time);
+		playerSpeed = m_Character.Update(time);
+		m_Background.Update(time, playerSpeed);
 	}
 	
-	playerLive = m_GameObject.Update(MovePlayer);
+	
 	return playerLive;
 }
 

@@ -25,13 +25,13 @@ class Background
 private:
 	BitMap* m_listImage;
 	float m_time;
-	int MovePlayer;
+	float flowWall;
 	
 
 public:
 	void Init(BitMap* listimage);
 	void Draw(HDC hdc, int height, int width);
-	int Update(float time);
+	void Update(float time ,float speed);
 
 	void Reset();
 };

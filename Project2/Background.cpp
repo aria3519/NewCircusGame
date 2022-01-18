@@ -5,7 +5,7 @@
 void Background::Init(BitMap* listimage)
 {
 	m_listImage = listimage;
-	MovePlayer = 1;
+	flowWall = 1;
 	
 }
 
@@ -23,20 +23,20 @@ void Background::Draw(HDC hdc, int height, int width)
 		m_listImage[BackImage_Back1].SizeUpDraw(hdc, i*67  , height - 183*2 , 1, 2); 
 	
 
-	for (int i=0;i<100 ;i++) //background
+	for (int i=0;i<14 * 2 ;i++) //background
 	{
 		// Back 2 x 66 y 67
 		// Back 3 x65 y 64
 		// Back 4 x65 y 64
 
 		
-		 if (i == 0 || i % 7 == 0) // 코끼리 
+		 if (i % 7 == 0) // 코끼리 
 		{
-			 m_listImage[BackImage_Back2].SizeUpDraw(hdc, i * 65 * 3 + MovePlayer, height - 183 * 2 - 64 * 3, 3, 3);
+			 m_listImage[BackImage_Back2].SizeUpDraw(hdc, i * 65 * 3 + flowWall, height - 183 * 2 - 64 * 3, 3, 3);
 		}
 		else
 		{
-			m_listImage[BackImage_Back3].SizeUpDraw(hdc, i * 65 * 3 + MovePlayer, height - 183 * 2 - 64*3, 3,3);
+			m_listImage[BackImage_Back3].SizeUpDraw(hdc, i * 65 * 3 + flowWall, height - 183 * 2 - 64*3, 3,3);
 		}
 	}
 	
@@ -45,23 +45,36 @@ void Background::Draw(HDC hdc, int height, int width)
 }
 
 
-int Background::Update(float time)
+void Background::Update(float time, float speed)
 {
 	m_time += time;
 	if (0.02f <= m_time)
 	{
 		m_time = 0;
+		// 벽 이동 
 		if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
 		{
-			MovePlayer -= 10;
+			flowWall -= speed * time;
+		}
+		if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+		{
+			if(flowWall<0)
+				flowWall -= speed * time;
 		}
 	}
-	return -MovePlayer;
+
+
+
+	// 벽 스크롤링 
+	if (flowWall <= -(65 * 3 * 14))
+		flowWall += (65 * 3 * 14);
+
+	
 }
 
 
 
 void Background::Reset()
 {
-	MovePlayer = 0;
+	flowWall = 0;
 }

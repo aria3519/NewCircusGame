@@ -24,12 +24,14 @@ private:
 	float m_time;
 	int MovingPlayer;
 	int PlayerY;
-	bool UsingJamp;
+
+	int jampState;
+	float moveSpeed;
 
 public:
 	void Init(BitMap* listimage);
 	void Draw(HDC hdc, int height, int width);
-	void Update(float time);
+	float Update(float time);
 	void Reset();
 
 	void Jamp(float time);

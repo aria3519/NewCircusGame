@@ -13,7 +13,7 @@ private:
 	Background m_Background;
 	GameObject m_GameObject;
 
-	int MovePlayer;
+	float playerSpeed;
 	bool playerLive;
 
 

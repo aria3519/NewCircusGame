@@ -21,10 +21,6 @@ bool GameObject::Update(int MovePlayer)
 {
 	m_MovePlayerX = MovePlayer;
 
-	/*if (m_MovePlayerX >= 500)
-	{
-		return false;
-	}*/
 
 	return true;
 }
