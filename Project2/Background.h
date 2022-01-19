@@ -26,12 +26,16 @@ private:
 	BitMap* m_listImage;
 	float m_time;
 	float flowWall;
+	int endingX;
+	int ShowendingX;
+	int totalEndingX;
+	
 	
 
 public:
-	void Init(BitMap* listimage);
+	void Init(BitMap* listimage,float endSize);
 	void Draw(HDC hdc, int height, int width);
-	void Update(float time ,float speed);
+	void Update(float time ,float speed, float totalX);
 
 	void Reset();
 };

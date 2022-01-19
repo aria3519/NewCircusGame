@@ -10,7 +10,7 @@ void GameManager::Init(HWND hWnd)
 	m_hdc = GetDC(m_hWnd);
 	m_listImage = BitMapManager::GetInstance()->Init(m_hdc); // 모든 리소스 파일 로드 
 	m_Main.Init(SetMainMenu()); // 메인메뉴 셋 리소스 
-	SetPlayGameImage(); // playgame image set
+
 	
 	
 
@@ -21,6 +21,10 @@ void GameManager::Init(HWND hWnd)
 	height = windowRect.bottom - windowRect.top;
 	width = windowRect.right - windowRect.left;
 
+	// 엔딩 사이즈를 계산 해야함 
+	
+	endingWindow = width * 10;
+	SetPlayGameImage(); // playgame image set
 	m_BackDC = CreateCompatibleDC(m_hdc);
 	
 }
@@ -170,7 +174,7 @@ void GameManager::SetPlayGameImage()
 		GMList[num] = m_listImage[i];
 		num++;
 	}
-	m_playGame.Init(backList, charList, GMList);
+	m_playGame.Init(backList, charList, GMList, endingWindow);
 	
 }
 

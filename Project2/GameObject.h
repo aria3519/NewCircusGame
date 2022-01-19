@@ -24,6 +24,6 @@ private:
 public:
 	void init(BitMap* listimage);
 	void Draw(HDC hdc, int height, int width);
-	bool Update(int MovePlayer);
+	bool Update(float MovePlayer);
 };
 
