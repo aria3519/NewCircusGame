@@ -23,7 +23,7 @@ void GameManager::Init(HWND hWnd)
 
 	// 엔딩 사이즈를 계산 해야함 
 	
-	endingWindow = width * 10;
+	
 	SetPlayGameImage(); // playgame image set
 	m_BackDC = CreateCompatibleDC(m_hdc);
 	
@@ -128,7 +128,7 @@ void GameManager::SetPlayGameImage()
 	// back 0~3 4
 	// character 19~24 6
 	int num = 0;
-	BitMap* backList = new BitMap[10];
+	BitMap* backList = new BitMap[20];
 	BitMap* charList = new BitMap[10];
 	BitMap* GMList = new BitMap[10];
 	// back 0~3 
@@ -145,6 +145,12 @@ void GameManager::SetPlayGameImage()
 	}
 	// back goal 1
 	backList[num] = m_listImage[IMAGE_GOAL];
+	num++;
+	for (int i = IMAGE_FIRE_1; IMAGE_FIRE_2 >= i; i++)
+	{
+		backList[num] = m_listImage[i];
+		num++;
+	}
 
 
 	num = 0;
@@ -159,11 +165,11 @@ void GameManager::SetPlayGameImage()
 
 	// GameObject 6~7 2 , 12~13 2 ,26~29 4
 	num = 0;
-	for (int i = IMAGE_FIRE_1; IMAGE_FIRE_2 >= i; i++)
+	/*for (int i = IMAGE_FIRE_1; IMAGE_FIRE_2 >= i; i++)
 	{
 		GMList[num] = m_listImage[i];
 		num++;
-	}
+	}*/
 	for (int i = IMAGE_LITTLERING_1; IMAGE_LITTLERING_2 >= i; i++)
 	{
 		GMList[num] = m_listImage[i];
@@ -174,7 +180,7 @@ void GameManager::SetPlayGameImage()
 		GMList[num] = m_listImage[i];
 		num++;
 	}
-	m_playGame.Init(backList, charList, GMList, endingWindow);
+	m_playGame.Init(backList, charList, GMList);
 	
 }
 

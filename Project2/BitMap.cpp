@@ -23,7 +23,7 @@ void BitMap::Draw(HDC hdc, int x, int y)
 	TransparentBlt(hdc, x - m_Size.cx*0.5f, y, m_Size.cx, m_Size.cy, MemDC, 0, 0, m_Size.cx, m_Size.cy, RGB(255, 0, 255));
 }
 
-void BitMap::SizeUpDraw(HDC hdc, int x, int y, int sizex, int sizey)
+void BitMap::SizeUpDraw(HDC hdc, int x, int y, float sizex, float sizey)
 {
 	TransparentBlt(hdc, x, y, m_Size.cx * sizex, m_Size.cy* sizey, MemDC, 0, 0, m_Size.cx, m_Size.cy, RGB(255, 0, 255));
 }

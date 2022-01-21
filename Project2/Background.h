@@ -1,6 +1,7 @@
 #pragma once
-#include<Windows.h>
-#include<string>
+#include "GameObject.h"
+//#include<Windows.h>
+//#include<string>
 
 
 
@@ -16,6 +17,8 @@ enum BackImage
 	BackImage_INTERFACE_2,
 	BackImage_INTERFACE_3,
 	BackImage_GOAL,
+	BackImage_FIRE_1,
+	BackImage_FIRE_2,
 
 };
 
@@ -24,18 +27,22 @@ class Background
 
 private:
 	BitMap* m_listImage;
+	GameObject m_gm;
 	float m_time;
 	float flowWall;
 	int endingX;
 	int ShowendingX;
 	int totalEndingX;
+
+	int m_count;
+	
 	
 	
 
 public:
-	void Init(BitMap* listimage,float endSize);
+	void Init(BitMap* listimage);
 	void Draw(HDC hdc, int height, int width);
-	void Update(float time ,float speed, float totalX);
+	int Update(float time ,float speed, float totalX);
 
 	void Reset();
 };

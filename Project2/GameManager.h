@@ -26,7 +26,7 @@ private:
 	int height;
 	int width;
 	bool playing; 
-	float endingWindow;
+
 
 private:
 	GameManager() {}

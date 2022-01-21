@@ -7,8 +7,6 @@ class BitMap;
 
 enum GameObjectImage
 {
-	GameObjectImage_FIRE_1,
-	GameObjectImage_FIRE_2,
 	GameObjectImage_LITTLERING_1,
 	GameObjectImage_LITTLERING_2,
 	GameObjectImage_RING_1,
@@ -20,10 +18,15 @@ class GameObject
 {
 private:
 	BitMap* m_listImage;
-	int m_MovePlayerX;
+	float flowObject;
+	
+
 public:
 	void init(BitMap* listimage);
 	void Draw(HDC hdc, int height, int width);
-	bool Update(float MovePlayer);
+	bool Update(float time, float moveSpeed);
+
+
+
 };
 

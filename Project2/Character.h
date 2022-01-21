@@ -31,7 +31,7 @@ private:
 public:
 	void Init(BitMap* listimage);
 	void Draw(HDC hdc, int height, int width);
-	float Update(float time);
+	float Update(float time , int totalX);
 	void Reset();
 
 	void Jamp(float time);

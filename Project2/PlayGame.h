@@ -15,11 +15,13 @@ private:
 
 	float playerSpeed;
 	bool playerLive;
-	float totalDistance;
+	int totalDistance;
+
+
 
 
 public:
-	void Init(BitMap* BackIamge, BitMap* CharImage, BitMap* GMImage,float endingWindowSize);
+	void Init(BitMap* BackIamge, BitMap* CharImage, BitMap* GMImage);
 	void Draw(HDC hdc, int height, int width);
 	bool Update(float time);
 

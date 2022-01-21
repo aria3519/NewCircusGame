@@ -4,12 +4,13 @@
 
 
 
-void PlayGame::Init(BitMap* BackIamge, BitMap* CharImage, BitMap* GMImage,float endingWindowSize)
+void PlayGame::Init(BitMap* BackIamge, BitMap* CharImage, BitMap* GMImage)
 {
 	playerLive = true;
 	totalDistance = 0;
+	
 	m_Character.Init(CharImage);
-	m_Background.Init(BackIamge, endingWindowSize);
+	m_Background.Init(BackIamge);
 	m_GameObject.init(GMImage);
 }
 
@@ -26,10 +27,9 @@ bool PlayGame::Update(float time)
 {
 	if (playerLive)
 	{
-		playerSpeed = m_Character.Update(time);
-		totalDistance += playerSpeed * time ;
-		m_Background.Update(time, playerSpeed, totalDistance);
-		m_GameObject.Update(time*playerSpeed);
+		playerSpeed = m_Character.Update(time, totalDistance);
+		totalDistance = m_Background.Update(time, playerSpeed, totalDistance);
+		m_GameObject.Update(time, playerSpeed);
 	}
 	
 	
