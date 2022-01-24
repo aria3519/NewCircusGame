@@ -29,6 +29,7 @@ private:
 	float moveSpeed;
 
 	int goCharacter;
+	int m_totalX;
 
 public:
 	void Init(BitMap* listimage);

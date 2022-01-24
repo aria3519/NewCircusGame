@@ -28,15 +28,17 @@ void Character::Draw(HDC hdc, int height, int width)
 
 float Character::Update(float time, int totalX)
 {
-
+	
 	if (jampState !=0) // 점프 동작 
 	{
 		MovingPlayer = CharImage_PLAYER_3;
 		Jamp(time);
 		return moveSpeed;
 	}
-
+	m_totalX = totalX;
 	m_time += time;
+
+
 	if (0.02f <= m_time)
 	{
 		m_time = 0;
@@ -48,27 +50,29 @@ float Character::Update(float time, int totalX)
 		}
 		if (GetAsyncKeyState(VK_RIGHT) & 0x8000) 
 		{
-			if (totalX <= MAXBACKGROUND)
+			if (m_totalX <= MAXBACKGROUND)
 			{
 				moveSpeed = 1000;
 				
 			}
 			else
 			{
-				
-				goCharacter += 1000* time;
+				moveSpeed = 1;
+				if(goCharacter < 1200)
+					goCharacter += 1000* time;
 			}
 			MovingPlayer++;
 		}
 		else if (GetAsyncKeyState(VK_LEFT) & 0x8000)
 		{
-			if (totalX <= MAXBACKGROUND)
+			if (m_totalX <= MAXBACKGROUND)
 			{
 				moveSpeed = -1000;
 				
 			}
 			else
 			{
+				moveSpeed = -1;
 				if(goCharacter>0)
 					goCharacter -= 1000 * time;
 			}
@@ -103,12 +107,25 @@ void Character::Jamp(float time)
 	else if(jampState == 2)
 	{
 		if (PlayerY < 0) // 점프시 내려갈때 
+		{
 			PlayerY += 1000 * time;
+		}
 		else
 		{
 			jampState = 0;
 			
 		}
 	}
+	if (m_totalX > MAXBACKGROUND && moveSpeed >0&& goCharacter < 1200)
+	{
+		goCharacter += 1000 * time;
+
+	}
+	if (m_totalX > MAXBACKGROUND && moveSpeed < 0 && goCharacter>0)
+	{
+		goCharacter -= 1000 * time;
+
+	}
+
 	
 }
