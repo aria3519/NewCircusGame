@@ -28,6 +28,8 @@ private:
 	int jampState;
 	float moveSpeed;
 
+	int goCharacter;
+
 public:
 	void Init(BitMap* listimage);
 	void Draw(HDC hdc, int height, int width);

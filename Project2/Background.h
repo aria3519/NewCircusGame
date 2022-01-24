@@ -30,7 +30,7 @@ private:
 	GameObject m_gm;
 	float m_time;
 	float flowWall;
-	int endingX;
+	
 	int ShowendingX;
 	int totalEndingX;
 

@@ -1,6 +1,10 @@
 #include "Character.h"
 #include "BitMapManager.h"
 
+
+
+#define MAXBACKGROUND 2
+
 void Character::Init(BitMap* listimage)
 {
 	m_listImage = listimage;
@@ -8,6 +12,7 @@ void Character::Init(BitMap* listimage)
 	PlayerY = 1;
 	jampState = 0;
 	moveSpeed = 0;
+	goCharacter = 0;
 }
 
 void Character::Draw(HDC hdc, int height, int width)
@@ -17,7 +22,7 @@ void Character::Draw(HDC hdc, int height, int width)
 	{
 		MovingPlayer = CharImage_PLAYER_2;
 	}
-	m_listImage[MovingPlayer].SizeUpDraw(hdc, 66*1 , height - (63*2)*2 + PlayerY,2,2);
+	m_listImage[MovingPlayer].SizeUpDraw(hdc, 66*1 + goCharacter, height - (63*2)*2 + PlayerY,2,2);
 
 }
 
@@ -43,18 +48,31 @@ float Character::Update(float time, int totalX)
 		}
 		if (GetAsyncKeyState(VK_RIGHT) & 0x8000) 
 		{
-			moveSpeed = 1000;
+			if (totalX <= MAXBACKGROUND)
+			{
+				moveSpeed = 1000;
+				
+			}
+			else
+			{
+				
+				goCharacter += 1000* time;
+			}
 			MovingPlayer++;
 		}
 		else if (GetAsyncKeyState(VK_LEFT) & 0x8000)
 		{
-			if (totalX <= 0)
-				moveSpeed = 0;
-			else
+			if (totalX <= MAXBACKGROUND)
 			{
 				moveSpeed = -1000;
-				MovingPlayer++;
+				
 			}
+			else
+			{
+				if(goCharacter>0)
+					goCharacter -= 1000 * time;
+			}
+			MovingPlayer++;
 		}
 		else 
 		{

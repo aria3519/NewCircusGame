@@ -19,6 +19,8 @@ class GameObject
 private:
 	BitMap* m_listImage;
 	float flowObject;
+
+	int count;
 	
 
 public:
