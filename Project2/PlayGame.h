@@ -17,6 +17,9 @@ private:
 	bool playerLive;
 	int totalDistance;
 
+	float m_timer;
+	
+
 
 
 
@@ -26,6 +29,7 @@ public:
 	bool Update(float time);
 
 	void Reset();
+	
 
 };
 

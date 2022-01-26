@@ -9,10 +9,14 @@ void Background::Init(BitMap* listimage)
 	m_listImage = listimage;
 	flowWall = 1;
 	
-	
+	m_Background = BackImage_Back3;
+	m_fireObject = BackImage_FIRE_1;
 
 	totalEndingX = 10;
 	m_count = 0;
+	m_ReachEnd = false;
+	m_time = 0;
+	m_timefire = 0;
 	
 }
 
@@ -45,10 +49,10 @@ void Background::Draw(HDC hdc, int height, int width)
 			}
 			else
 			{
-				m_listImage[BackImage_Back3].SizeUpDraw(hdc, i * 65 * 3 + flowWall, height - 183 * 2 - 64 * 3, 3, 3);
+				m_listImage[m_Background].SizeUpDraw(hdc, i * 65 * 3 + flowWall, height - 183 * 2 - 64 * 3, 3, 3);
 				// 장애물 
 				if (i % 2 == 0)
-					m_listImage[BackImage_FIRE_1].SizeUpDraw(hdc, i * 65 * 3 + flowWall, height * 0.7f, 2, 2);
+					m_listImage[m_fireObject].SizeUpDraw(hdc, i * 65 * 3 + flowWall, height * 0.7f, 2, 2);
 			}
 		}
 		// 밑에 거리 표시 기능 
@@ -72,10 +76,10 @@ void Background::Draw(HDC hdc, int height, int width)
 			}
 			else
 			{
-				m_listImage[BackImage_Back3].SizeUpDraw(hdc, i * 65 * 3 + flowWall, height - 183 * 2 - 64 * 3, 3, 3);
+				m_listImage[m_Background].SizeUpDraw(hdc, i * 65 * 3 + flowWall, height - 183 * 2 - 64 * 3, 3, 3);
 				
 				if (i % 2 == 0 && i<14)
-					m_listImage[BackImage_FIRE_1].SizeUpDraw(hdc, i * 65 * 3 + flowWall, height * 0.7f, 2, 2);
+					m_listImage[m_fireObject].SizeUpDraw(hdc, i * 65 * 3 + flowWall, height * 0.7f, 2, 2);
 			}
 		}
 	}
@@ -89,10 +93,10 @@ void Background::Draw(HDC hdc, int height, int width)
 			}
 			else
 			{
-				m_listImage[BackImage_Back3].SizeUpDraw(hdc, i * 65 * 3, height - 183 * 2 - 64 * 3, 3, 3);
+				m_listImage[m_Background].SizeUpDraw(hdc, i * 65 * 3, height - 183 * 2 - 64 * 3, 3, 3);
 			}
 		}
-		m_listImage[BackImage_GOAL].SizeUpDraw(hdc, width * .85f , height - 220, 2, 2);
+		m_listImage[BackImage_GOAL].SizeUpDraw(hdc, width * .85f+30 , height - 220, 2, 2);
 	}
 
 
@@ -101,8 +105,18 @@ void Background::Draw(HDC hdc, int height, int width)
 
 int Background::Update(float time, float speed, float totalx)
 {
-
+	m_time += time;
+	m_timefire += time;
 	flowWall -= speed * time;
+
+
+	if (0.05f <= m_timefire) // 화염장애물 움직임 시간관리
+	{
+		m_timefire = 0;
+		m_fireObject++;
+		if (m_fireObject > BackImage_FIRE_2)
+			m_fireObject = BackImage_FIRE_1;
+	}
 
 	// 벽 스크롤링 
 	if (flowWall < -(65 * 3 * 14))
@@ -123,7 +137,21 @@ int Background::Update(float time, float speed, float totalx)
 	if (flowWall > 0 ) // 뒤 못가게함 
 	{
 		flowWall = 1;
+		
 	}
+	if (m_ReachEnd) // 끝에 도착 했을때 
+	{
+		if (0.05f <= m_time)
+		{
+			m_time = 0;
+			m_Background++;
+	
+			if (m_Background > BackImage_Back4)
+				m_Background = BackImage_Back3;
+		}
+
+	}
+	
 	
 	return m_count;
 	
@@ -133,9 +161,16 @@ int Background::Update(float time, float speed, float totalx)
 
 void Background::Reset()
 {
-	m_count = 0;
+
 	flowWall = 1;
+	m_Background = BackImage_Back3;
+	totalEndingX = 10;
+	m_count = 0;
+	m_ReachEnd = false;
+	m_time = 0;
 	
 	
 
 }
+
+

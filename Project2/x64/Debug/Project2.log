@@ -1,8 +1,31 @@
-﻿  Character.cpp
-C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Character.cpp(62,31): warning C4244: '+=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Character.cpp(77,32): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Character.cpp(102,26): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Character.cpp(111,26): warning C4244: '+=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Character.cpp(121,29): warning C4244: '+=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Character.cpp(126,29): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  Background.cpp
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Background.cpp(48,61): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Background.cpp(52,58): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Background.cpp(55,78): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Background.cpp(55,59): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Background.cpp(59,67): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Background.cpp(62,93): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Background.cpp(62,41): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Background.cpp(75,61): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Background.cpp(79,58): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Background.cpp(82,78): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Background.cpp(82,59): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Background.cpp(99,59): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Character.cpp
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Character.cpp(72,31): warning C4244: '+=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Character.cpp(85,31): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Character.cpp(122,26): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Character.cpp(142,26): warning C4244: '+=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Character.cpp(152,29): warning C4244: '+=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\Character.cpp(157,29): warning C4244: '-=': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GameManager.cpp
+  GameObject.cpp
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\GameObject.cpp(22,92): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\GameObject.cpp(22,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\GameObject.cpp(23,100): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\GameObject.cpp(23,87): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  PlayGame.cpp
+C:\Users\A-05\Documents\GitHub\NewCircusGame\Project2\PlayGame.cpp(32,58): warning C4244: '인수': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Project2.cpp
+  코드를 생성하고 있습니다...
   Project2.vcxproj -> C:\Users\A-05\Documents\GitHub\NewCircusGame\x64\Debug\Project2.exe

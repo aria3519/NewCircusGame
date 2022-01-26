@@ -38,6 +38,14 @@ public:
 	void Reset();
 
 	void Jamp(float time);
+	int GetgoCharacter()
+	{
+		return goCharacter;
+	}
+	int GetJampState()
+	{
+		return jampState;
+	}
 
 };
 

@@ -29,6 +29,7 @@ private:
 	BitMap* m_listImage;
 	GameObject m_gm;
 	float m_time;
+	float m_timefire;
 	float flowWall;
 	
 	int ShowendingX;
@@ -36,6 +37,9 @@ private:
 
 	int m_count;
 	
+	int m_Background;
+	bool m_ReachEnd;
+	int m_fireObject;
 	
 	
 
@@ -45,5 +49,12 @@ public:
 	int Update(float time ,float speed, float totalX);
 
 	void Reset();
+
+	
+	void TrueRachEnd()
+	{
+		m_ReachEnd = true;
+	}
+	
 };
 

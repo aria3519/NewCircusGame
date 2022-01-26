@@ -19,8 +19,13 @@ class GameObject
 private:
 	BitMap* m_listImage;
 	float flowObject;
+	float flowWall;
 
 	int count;
+
+	float m_timeRing;
+	int m_RingImage1;
+	int m_RingImage2;
 	
 
 public:

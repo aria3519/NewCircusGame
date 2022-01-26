@@ -2,12 +2,13 @@
 
 
 
-
+#define MAXBACKGROUND 3
 
 void PlayGame::Init(BitMap* BackIamge, BitMap* CharImage, BitMap* GMImage)
 {
 	playerLive = true;
 	totalDistance = 0;
+	m_timer = 0;
 	
 	m_Character.Init(CharImage);
 	m_Background.Init(BackIamge);
@@ -30,6 +31,19 @@ bool PlayGame::Update(float time)
 		playerSpeed = m_Character.Update(time, totalDistance);
 		totalDistance = m_Background.Update(time, playerSpeed, totalDistance);
 		m_GameObject.Update(time, playerSpeed);
+		if (m_Character.GetgoCharacter() >= 1200 && m_Character.GetJampState()==3)
+		{
+			
+			m_Background.TrueRachEnd();
+			m_timer += time;
+
+			if (3.0f <= m_timer)
+			{
+				Reset();
+				return false;
+			}
+			
+		}
 	}
 	
 	
@@ -37,8 +51,11 @@ bool PlayGame::Update(float time)
 }
 
 
+
+
 void PlayGame::Reset()
 {
+	m_timer = 0;
 	playerLive = true;
 	m_Background.Reset();
 	m_Character.Reset();
