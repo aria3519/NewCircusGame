@@ -28,12 +28,20 @@ private:
 	int m_RingImage2;
 	
 
+
 public:
 	void init(BitMap* listimage);
-	void Draw(HDC hdc, int height, int width);
+	virtual void Draw(HDC hdc, int height, int width);
 	bool Update(float time, float moveSpeed);
 
 
 
 };
 
+class GameObject2 : public GameObject
+{
+	BitMap* m_cashImage;
+
+public:
+	virtual void Draw(HDC hdc, int height, int width);
+};

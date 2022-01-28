@@ -60,3 +60,9 @@ bool GameObject::Update(float time, float moveSpeed)
 	return true;
 }
 
+void GameObject2::Draw(HDC hdc, int height, int width)
+{
+	GameObject::Draw(hdc, height, width);
+
+
+}

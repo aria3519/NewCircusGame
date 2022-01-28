@@ -83,8 +83,12 @@ float Character::Update(float time, int totalX)
 			{
 				moveSpeed = -1;
 				goCharacter -= 1000 * time;
-				if (goCharacter < 0)
+				
+				if (goCharacter <= 0)
+				{
+					goCharacter = 0;
 					moveSpeed = -1000;
+				}
 
 
 				

@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "ObjectFire.h"
 //#include<Windows.h>
 //#include<string>
 
@@ -27,7 +28,6 @@ class Background
 
 private:
 	BitMap* m_listImage;
-	GameObject m_gm;
 	float m_time;
 	float m_timefire;
 	float flowWall;
@@ -40,6 +40,9 @@ private:
 	int m_Background;
 	bool m_ReachEnd;
 	int m_fireObject;
+
+	ObjectFire m_fire[10];
+		;
 	
 	
 
