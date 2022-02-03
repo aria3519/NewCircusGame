@@ -12,9 +12,12 @@ private:
 	BitMap* m_listImage[2];
 	int m_Fire;
 
+	float x, y;
+	RECT rect;
+
 public:
 	void init();
-	void draw(HDC hdc, int height, int width, int i, float flowWall);
-	void update();
+	void draw(HDC hdc, int height, float flowWall);
+	void update(int i, float height, float flowWall);
 };
 

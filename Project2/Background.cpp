@@ -1,4 +1,4 @@
-#include "Background.h"
+ #include "Background.h"
 #include "BitMapManager.h"
 
 
@@ -20,6 +20,7 @@ void Background::Init(BitMap* listimage)
 
 	for (int i = 0; i < 10; i++)
 		m_fire[i].init();
+	m_height = 0;
 	
 }
 
@@ -30,7 +31,7 @@ void Background::Draw(HDC hdc, int height, int width)
 	// back0 Xsize 67 Ysize 183
 	 
 	
-	
+	m_height = height;
 	/*TextOutA(hdc, height * 0.5f, 0, "10", strlen("10"));*/
 
 	for(int i=0;i<22;i++)// floor
@@ -58,7 +59,10 @@ void Background::Draw(HDC hdc, int height, int width)
 				{
 					/*m_listImage[m_fireObject].SizeUpDraw(hdc, i * 65 * 3 + flowWall, height * 0.7f, 2, 2);*/
 					for (int j = 0; j < 10; j++)
-						m_fire[j].draw(hdc, height, width, i, flowWall);
+					{
+						m_fire[j].update(i, height, flowWall);
+						m_fire[j].draw(hdc, height, flowWall);
+					}
 				}
 			}
 		}
@@ -89,10 +93,14 @@ void Background::Draw(HDC hdc, int height, int width)
 				{
 					/*m_listImage[m_fireObject].SizeUpDraw(hdc, i * 65 * 3 + flowWall, height * 0.7f, 2, 2);*/
 					for (int j = 0; j < 10; j++)
-						m_fire[j].draw(hdc, height, width,i,flowWall);
+					{
+						m_fire[j].update(i,height,flowWall);
+						m_fire[j].draw(hdc, height, flowWall);
+					}
 				}
 			}
 		}
+
 		m_listImage[BackImage_INTERFACE_3].SizeUpDraw(hdc, width * 1.0f + flowWall, height - 100, 2, 2);
 		auto distStr = std::to_string((totalEndingX - m_count) * 100);// 거리 표시 
 		SetTextColor(hdc, RGB(255, 0, 0)); // 문자 색을 붉은색으로 변경.
@@ -132,8 +140,8 @@ int Background::Update(float time, float speed, float totalx)
 		/*m_fireObject++;
 		if (m_fireObject > BackImage_FIRE_2)
 			m_fireObject = BackImage_FIRE_1;*/
-		for (int i = 0; i < 0; i++)
-			m_fire[i].update();
+	/*	for (int i = 0; i < 10; i++)
+			m_fire[i].update(m_height,flowWall);*/
 	}
 
 	// 벽 스크롤링 

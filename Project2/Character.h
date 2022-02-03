@@ -30,6 +30,7 @@ private:
 
 	int goCharacter;
 	int m_totalX;
+	RECT m_CharRect;
 
 public:
 	void Init(BitMap* listimage);
@@ -38,6 +39,7 @@ public:
 	void Reset();
 
 	void Jamp(float time);
+	void CheckBox();
 	int GetgoCharacter()
 	{
 		return goCharacter;
@@ -46,6 +48,8 @@ public:
 	{
 		return jampState;
 	}
+
+	
 
 };
 

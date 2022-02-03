@@ -3,6 +3,7 @@
 #include"Character.h"
 #include"Background.h"
 #include "GameObject.h"
+#include "ObjectFire.h"
 
 
 class PlayGame
@@ -12,6 +13,7 @@ private:
 	Character m_Character;
 	Background m_Background;
 	GameObject m_GameObject;
+	
 
 	float playerSpeed;
 	bool playerLive;

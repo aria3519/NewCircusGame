@@ -42,7 +42,8 @@ private:
 	int m_fireObject;
 
 	ObjectFire m_fire[10];
-		;
+	float m_height;
+		
 	
 	
 
@@ -57,6 +58,8 @@ public:
 	void TrueRachEnd()
 	{
 		m_ReachEnd = true;
+
+		
 	}
 	
 };
