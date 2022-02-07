@@ -13,6 +13,7 @@ void PlayGame::Init(BitMap* BackIamge, BitMap* CharImage, BitMap* GMImage)
 	m_Character.Init(CharImage);
 	m_Background.Init(BackIamge);
 	m_GameObject.init(GMImage);
+	m_GameObject2.init(GMImage);
 	
 }
 
@@ -21,6 +22,7 @@ void PlayGame::Draw(HDC hdc, int height, int width)
 	m_Background.Draw(hdc, height, width);
 	m_Character.Draw(hdc, height, width);
 	m_GameObject.Draw(hdc, height, width);
+	m_GameObject2.Draw(hdc, height, width);
 
 
 }
@@ -32,7 +34,7 @@ bool PlayGame::Update(float time)
 	{
 		playerSpeed = m_Character.Update(time, totalDistance);
 		totalDistance = m_Background.Update(time, playerSpeed, totalDistance);
-		m_GameObject.Update(time, playerSpeed);
+		
 		if (m_Character.GetgoCharacter() >= 1200 && m_Character.GetJampState()==3)
 		{
 			
@@ -45,6 +47,12 @@ bool PlayGame::Update(float time)
 				return false;
 			}
 			
+		}
+		else
+		{
+			m_GameObject.Update(time, playerSpeed);
+			m_GameObject2.Update(time, playerSpeed);
+
 		}
 	}	
 	

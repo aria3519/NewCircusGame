@@ -18,6 +18,7 @@ class GameObject
 {
 private:
 	BitMap* m_listImage;
+	BitMap* m_cashImage;
 	float flowObject;
 	float flowWall;
 
@@ -27,10 +28,24 @@ private:
 	int m_RingImage1;
 	int m_RingImage2;
 	
+	RECT m_ScoreRect;
+	RECT m_killRect;
+	
+	float m_y, m_x;
+
+	
 
 
+	
+
+protected:
+	float m_speed;
+	float m_size;
+	float addx;
+	bool check;
+	
 public:
-	void init(BitMap* listimage);
+	virtual void init(BitMap* listimage);
 	virtual void Draw(HDC hdc, int height, int width);
 	bool Update(float time, float moveSpeed);
 
@@ -40,8 +55,11 @@ public:
 
 class GameObject2 : public GameObject
 {
-	BitMap* m_cashImage;
+	
+	
 
 public:
+	virtual void init(BitMap* listimage);
 	virtual void Draw(HDC hdc, int height, int width);
+	
 };

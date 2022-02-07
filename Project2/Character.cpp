@@ -13,10 +13,12 @@ void Character::Init(BitMap* listimage)
 	jampState = 0;
 	moveSpeed = 0;
 	goCharacter = 66 * 1;
+	m_height = 0;
 }
 
 void Character::Draw(HDC hdc, int height, int width)
 {
+	m_height = height;
 	if (MovingPlayer == CharImage_PLAYER_5)
 	{
 
@@ -28,7 +30,7 @@ void Character::Draw(HDC hdc, int height, int width)
 		MovingPlayer = CharImage_PLAYER_2;
 	}
 	m_listImage[MovingPlayer].SizeUpDraw(hdc,goCharacter, height - (63 * 2) * 2 + PlayerY,2,2);
-
+	m_CharRect = { (LONG)(goCharacter+50), (LONG)m_height - (63 * 2) * 2 + PlayerY,  (LONG)(goCharacter + 50)+50/*이미지 사이즈*/, (LONG)m_height - (63 * 2) * 2 + PlayerY + 120 }; // 그려줄 상자 세팅 
 	Rectangle(hdc, m_CharRect.left, m_CharRect.top, m_CharRect.right, m_CharRect.bottom);//사각형 영역 그리기 
 
 }
@@ -104,7 +106,7 @@ float Character::Update(float time, int totalX)
 		}
 	}
 
-	//m_CharRect = { (LONG)(x), (LONG)y,  (LONG)(x)+50/*이미지 사이즈*/, (LONG)y + 50 }; // 그려줄 상자 세팅 
+	
 
 	return moveSpeed;
 }

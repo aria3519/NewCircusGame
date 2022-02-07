@@ -28,6 +28,7 @@ class Background
 
 private:
 	BitMap* m_listImage;
+	BitMap* m_UIImage[3];
 	float m_time;
 	float m_timefire;
 	float flowWall;

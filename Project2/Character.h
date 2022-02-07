@@ -30,7 +30,9 @@ private:
 
 	int goCharacter;
 	int m_totalX;
+	
 	RECT m_CharRect;
+	float m_height;
 
 public:
 	void Init(BitMap* listimage);

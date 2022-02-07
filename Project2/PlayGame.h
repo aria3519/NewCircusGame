@@ -13,6 +13,7 @@ private:
 	Character m_Character;
 	Background m_Background;
 	GameObject m_GameObject;
+	GameObject2 m_GameObject2;
 	
 
 	float playerSpeed;

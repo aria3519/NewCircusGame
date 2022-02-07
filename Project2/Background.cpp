@@ -7,6 +7,9 @@
 void Background::Init(BitMap* listimage)
 {
 	m_listImage = listimage;
+	m_UIImage[0] = BitMapManager::GetInstance()->GetImage(IMAGE_INTERFACE_1);
+	m_UIImage[1] = BitMapManager::GetInstance()->GetImage(IMAGE_INTERFACE_2);
+	m_UIImage[2] = BitMapManager::GetInstance()->GetImage(IMAGE_INTERFACE_3);
 	flowWall = 1;
 	
 	m_Background = BackImage_Back3;
@@ -32,8 +35,8 @@ void Background::Draw(HDC hdc, int height, int width)
 	 
 	
 	m_height = height;
-	/*TextOutA(hdc, height * 0.5f, 0, "10", strlen("10"));*/
-
+	m_UIImage[0]->SizeUpDraw(hdc, 100, 0, 1, 1);
+	
 	for(int i=0;i<22;i++)// floor
 		m_listImage[BackImage_Back1].SizeUpDraw(hdc, i*67  , height - 183*2 , 1, 2); 
 	
@@ -133,16 +136,14 @@ int Background::Update(float time, float speed, float totalx)
 	m_timefire += time;
 	flowWall -= speed * time;
 
+	for (int i = 0; i < 10; i++)
+		m_fire[i].Checktime(time);
 
-	if (0.05f <= m_timefire) // 화염장애물 움직임 시간관리
-	{
-		m_timefire = 0;
-		/*m_fireObject++;
-		if (m_fireObject > BackImage_FIRE_2)
-			m_fireObject = BackImage_FIRE_1;*/
-	/*	for (int i = 0; i < 10; i++)
-			m_fire[i].update(m_height,flowWall);*/
-	}
+	//if (0.05f <= m_timefire) // 화염장애물 움직임 시간관리
+	//{
+	//	m_timefire = 0;
+	//	
+	//}
 
 	// 벽 스크롤링 
 	if (flowWall < -(65 * 3 * 14))
