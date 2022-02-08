@@ -39,10 +39,10 @@ void Background::Draw(HDC hdc, int height, int width)
 	
 	for(int i=0;i<22;i++)// floor
 		m_listImage[BackImage_Back1].SizeUpDraw(hdc, i*67  , height - 183*2 , 1, 2); 
-	
+	int j = 0;
 	if (m_count < MAXBACKGROUND) // 배경이 흐를 경우 
 	{
-
+		j = 0;
 		for (int i = 0; i < 22 ; i++) //background
 		{
 			// Back 2 x 66 y 67
@@ -60,12 +60,11 @@ void Background::Draw(HDC hdc, int height, int width)
 				// 장애물 
 				if (i % 2 == 0)
 				{
-					/*m_listImage[m_fireObject].SizeUpDraw(hdc, i * 65 * 3 + flowWall, height * 0.7f, 2, 2);*/
-					for (int j = 0; j < 10; j++)
-					{
-						m_fire[j].update(i, height, flowWall);
-						m_fire[j].draw(hdc, height, flowWall);
-					}
+					
+					//m_fire[j].update(i, height, flowWall);
+					m_fire[j].draw(hdc, height, flowWall, i + 1);
+					j++;
+					
 				}
 			}
 		}
@@ -77,6 +76,7 @@ void Background::Draw(HDC hdc, int height, int width)
 	}
 	else if (m_count == MAXBACKGROUND)
 	{
+		j = 0;
 		for (int i = 0; i < 22; i++) //background
 		{
 			// Back 2 x 66 y 67
@@ -94,12 +94,10 @@ void Background::Draw(HDC hdc, int height, int width)
 				
 				if (i % 2 == 0 && i < 14)
 				{
-					/*m_listImage[m_fireObject].SizeUpDraw(hdc, i * 65 * 3 + flowWall, height * 0.7f, 2, 2);*/
-					for (int j = 0; j < 10; j++)
-					{
-						m_fire[j].update(i,height,flowWall);
-						m_fire[j].draw(hdc, height, flowWall);
-					}
+					
+					//m_fire[j].update(i, height, flowWall);
+					m_fire[j].draw(hdc, height, flowWall, i + 1);
+					j++;
 				}
 			}
 		}
@@ -133,11 +131,14 @@ void Background::Draw(HDC hdc, int height, int width)
 int Background::Update(float time, float speed, float totalx)
 {
 	m_time += time;
-	m_timefire += time;
+	
 	flowWall -= speed * time;
 
 	for (int i = 0; i < 10; i++)
-		m_fire[i].Checktime(time);
+	{
+		m_fire[i].update(time);
+		
+	}
 
 	//if (0.05f <= m_timefire) // 화염장애물 움직임 시간관리
 	//{
@@ -178,6 +179,7 @@ int Background::Update(float time, float speed, float totalx)
 		}
 
 	}
+	
 	
 	
 	return m_count;

@@ -15,11 +15,16 @@ private:
 
 	float x, y;
 	RECT rect;
+	
 
 public:
 	void init();
-	void draw(HDC hdc, int height, float flowWall);
-	void update(int i, float height, float flowWall);
-	void Checktime(float time);
+	void draw(HDC hdc, int height, float flowWall, int i);
+	void update(float time);
+	
+	RECT GetRect()
+	{
+		return rect;
+	}
 };
 

@@ -44,6 +44,8 @@ private:
 
 	ObjectFire m_fire[10];
 	float m_height;
+
+	RECT killBox[10];
 		
 	
 	
@@ -61,6 +63,11 @@ public:
 		m_ReachEnd = true;
 
 		
+	}
+
+	RECT GetRectKill(int i)
+	{
+		return m_fire[i].GetRect();
 	}
 	
 };

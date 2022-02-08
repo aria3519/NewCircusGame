@@ -21,6 +21,7 @@ private:
 	int totalDistance;
 
 	float m_timer;
+	int m_Score;
 	
 
 
@@ -32,6 +33,7 @@ public:
 	bool Update(float time);
 
 	void Reset();
+	bool InteractCheck();
 	
 
 };

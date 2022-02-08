@@ -47,6 +47,14 @@ protected:
 public:
 	virtual void init(BitMap* listimage);
 	virtual void Draw(HDC hdc, int height, int width);
+	virtual RECT GetRectScore()
+	{
+		return m_ScoreRect;
+	}
+	virtual RECT GetRectKill()
+	{
+		return m_killRect;
+	}
 	bool Update(float time, float moveSpeed);
 
 

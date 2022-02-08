@@ -41,7 +41,8 @@ public:
 	void Reset();
 
 	void Jamp(float time);
-	void CheckBox();
+
+	
 	int GetgoCharacter()
 	{
 		return goCharacter;
@@ -50,7 +51,10 @@ public:
 	{
 		return jampState;
 	}
-
+	RECT GetRect()
+	{
+		return m_CharRect;
+	}
 	
 
 };

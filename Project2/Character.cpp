@@ -170,11 +170,4 @@ void Character::Jamp(float time)
 }
 
 
-void Character::CheckBox()
-{
-	RECT temp;
-	if (IntersectRect(&temp, &temp, &temp))
-	{
 
-	}
-}
