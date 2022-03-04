@@ -23,12 +23,14 @@ void Background::Init(BitMap* listimage)
 
 	for (int i = 0; i < 10; i++)
 		m_fire[i].init();
+	m_goalfire[0].init();
 	m_height = 0;
+	
 	
 }
 
 
-void Background::Draw(HDC hdc, int height, int width)
+void Background::Draw(HDC hdc, int height, int width,int life)
 {
 	// back 0~3 4
 	// back0 Xsize 67 Ysize 183
@@ -36,6 +38,19 @@ void Background::Draw(HDC hdc, int height, int width)
 	
 	m_height = height;
 	m_UIImage[0]->SizeUpDraw(hdc, 100, 0, 1, 1);
+	for (int i=0;i< life;i++)
+	{
+		m_UIImage[1]->SizeUpDraw(hdc, 700 +i*50, 15, 2, 2);
+	}
+
+
+	std::string str = "Score";
+	SetTextColor(hdc, RGB(255, 0, 0)); // 문자 색을 붉은색으로 변경.
+	TextOutA(hdc, 150, 20, str.c_str(), str.length());
+	std::string str2 = "Bonus";
+	SetTextColor(hdc, RGB(255, 0, 0)); // 문자 색을 붉은색으로 변경.
+	TextOutA(hdc, 350, 20, str2.c_str(), str2.length());
+	
 	
 	for(int i=0;i<22;i++)// floor
 		m_listImage[BackImage_Back1].SizeUpDraw(hdc, i*67  , height - 183*2 , 1, 2); 
@@ -68,6 +83,7 @@ void Background::Draw(HDC hdc, int height, int width)
 				}
 			}
 		}
+		
 		// 밑에 거리 표시 기능 
 		m_listImage[BackImage_INTERFACE_3].SizeUpDraw(hdc, width * 1.1f + flowWall, height - 100, 2, 2);
 		auto distStr = std::to_string((totalEndingX - m_count) * 100);// 거리 표시 
@@ -101,6 +117,7 @@ void Background::Draw(HDC hdc, int height, int width)
 				}
 			}
 		}
+		
 
 		m_listImage[BackImage_INTERFACE_3].SizeUpDraw(hdc, width * 1.0f + flowWall, height - 100, 2, 2);
 		auto distStr = std::to_string((totalEndingX - m_count) * 100);// 거리 표시 
@@ -122,6 +139,7 @@ void Background::Draw(HDC hdc, int height, int width)
 			}
 		}
 		m_listImage[BackImage_GOAL].SizeUpDraw(hdc, width * .85f+30 , height - 220, 2, 2);
+		m_goalfire[0].draw(hdc, height, 1150 ,0);
 	}
 
 
@@ -131,8 +149,9 @@ void Background::Draw(HDC hdc, int height, int width)
 int Background::Update(float time, float speed, float totalx)
 {
 	m_time += time;
-	
 	flowWall -= speed * time;
+
+	
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -201,5 +220,7 @@ void Background::Reset()
 	
 
 }
+
+
 
 

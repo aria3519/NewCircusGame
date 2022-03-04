@@ -43,21 +43,22 @@ private:
 	int m_fireObject;
 
 	ObjectFire m_fire[10];
+	ObjectFire m_goalfire[1];
 	float m_height;
 
 	RECT killBox[10];
+	
 		
 	
 	
 
 public:
 	void Init(BitMap* listimage);
-	void Draw(HDC hdc, int height, int width);
+	void Draw(HDC hdc, int height, int width, int life);
 	int Update(float time ,float speed, float totalX);
 
 	void Reset();
 
-	
 	void TrueRachEnd()
 	{
 		m_ReachEnd = true;
@@ -68,6 +69,10 @@ public:
 	RECT GetRectKill(int i)
 	{
 		return m_fire[i].GetRect();
+	}
+	RECT GetRectKill2()
+	{
+		return m_goalfire[0].GetRect();
 	}
 	
 };

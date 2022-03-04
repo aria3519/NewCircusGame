@@ -22,6 +22,7 @@ class Character
 private:
 	BitMap* m_listImage;
 	float m_time;
+	float m_clearTimer;
 	int MovingPlayer;
 	int PlayerY;
 
@@ -33,6 +34,7 @@ private:
 	
 	RECT m_CharRect;
 	float m_height;
+	
 
 public:
 	void Init(BitMap* listimage);
@@ -41,6 +43,8 @@ public:
 	void Reset();
 
 	void Jamp(float time);
+	void Die();
+	
 
 	
 	int GetgoCharacter()

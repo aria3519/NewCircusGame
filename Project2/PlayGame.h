@@ -12,8 +12,8 @@ class PlayGame
 private:
 	Character m_Character;
 	Background m_Background;
-	GameObject m_GameObject;
-	GameObject2 m_GameObject2;
+	GameObject m_GameObject[20];
+	GameObject2 m_GameObject2[20];
 	
 
 	float playerSpeed;
@@ -21,7 +21,14 @@ private:
 	int totalDistance;
 
 	float m_timer;
+	float m_interacttTimer;
+	float m_dieTimer;
+	float m_BonusTimer;
+
+
 	int m_Score;
+	int m_Bonus;
+	int m_life;
 	
 
 
@@ -34,6 +41,8 @@ public:
 
 	void Reset();
 	bool InteractCheck();
+	
+	void Die(HDC hdc, int height, int width);
 	
 
 };

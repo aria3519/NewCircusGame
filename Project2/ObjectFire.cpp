@@ -22,13 +22,13 @@ void ObjectFire::draw(HDC hdc, int height, float flowWall, int i)
 
 	
 	rect = { (LONG)(x + 20), (LONG)y,  (LONG)(x)+80/*이미지 사이즈*/, (LONG)y + 100 };
-	Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);//사각형 영역 그리기 
+	//Rectangle(hdc, rect.left, rect.top, rect.right, rect.bottom);//사각형 영역 그리기 
 }
 
 
 void ObjectFire::update(float time)
 {
-	
+	m_time += time;
 	if (0.1f <= m_time)
 	{
 		m_time = 0;

@@ -14,15 +14,21 @@ void Character::Init(BitMap* listimage)
 	moveSpeed = 0;
 	goCharacter = 66 * 1;
 	m_height = 0;
+	m_clearTimer = 0;
+	
 }
 
 void Character::Draw(HDC hdc, int height, int width)
 {
 	m_height = height;
-	if (MovingPlayer == CharImage_PLAYER_5)
+	if (MovingPlayer == CharImage_PLAYER_5 || MovingPlayer == CharImage_PLAYER_6)
 	{
 
 		
+	}
+	else if (MovingPlayer == CharImage_PLAYER_4 && jampState == 3)
+	{
+
 	}
 	// char x 66 y 63
 	else if (MovingPlayer > CharImage_PLAYER_3)
@@ -31,7 +37,7 @@ void Character::Draw(HDC hdc, int height, int width)
 	}
 	m_listImage[MovingPlayer].SizeUpDraw(hdc,goCharacter, height - (63 * 2) * 2 + PlayerY,2,2);
 	m_CharRect = { (LONG)(goCharacter+50), (LONG)m_height - (63 * 2) * 2 + PlayerY,  (LONG)(goCharacter + 50)+50/*이미지 사이즈*/, (LONG)m_height - (63 * 2) * 2 + PlayerY + 120 }; // 그려줄 상자 세팅 
-	Rectangle(hdc, m_CharRect.left, m_CharRect.top, m_CharRect.right, m_CharRect.bottom);//사각형 영역 그리기 
+	//Rectangle(hdc, m_CharRect.left, m_CharRect.top, m_CharRect.right, m_CharRect.bottom);//사각형 영역 그리기 
 
 }
 
@@ -46,10 +52,17 @@ float Character::Update(float time, int totalX)
 	}
 	m_totalX = totalX;
 	m_time += time;
+	m_clearTimer += time;
 
-	if (jampState == 3)
+	if (jampState == 3 )
 	{
-	
+		if (m_clearTimer >= 0.1f)
+		{
+			m_clearTimer = 0;
+			MovingPlayer++;
+			if (MovingPlayer > CharImage_PLAYER_5)
+				MovingPlayer = CharImage_PLAYER_4;
+		}
 		return 0;
 	}
 
@@ -105,7 +118,6 @@ float Character::Update(float time, int totalX)
 			MovingPlayer = CharImage_PLAYER_1;
 		}
 	}
-
 	
 
 	return moveSpeed;
@@ -118,6 +130,7 @@ void Character::Reset()
 	jampState = 0;
 	moveSpeed = 0;
 	goCharacter = 0;
+	m_clearTimer = 0;
 }
 
 void Character::Jamp(float time)
@@ -144,6 +157,8 @@ void Character::Jamp(float time)
 				{
 					MovingPlayer = CharImage_PLAYER_5;
 					jampState = 3;
+					PlayerY = -75;
+					goCharacter = 1250;
 					return;
 				}
 			}
@@ -168,6 +183,13 @@ void Character::Jamp(float time)
 
 	
 }
+
+void Character::Die()
+{
+	MovingPlayer = CharImage_PLAYER_6;
+	
+}
+
 
 
 

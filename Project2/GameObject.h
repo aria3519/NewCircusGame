@@ -46,7 +46,8 @@ protected:
 	
 public:
 	virtual void init(BitMap* listimage);
-	virtual void Draw(HDC hdc, int height, int width);
+	virtual void Draw(HDC hdc, int height, int width,int i);
+	virtual void Reset();
 	virtual RECT GetRectScore()
 	{
 		return m_ScoreRect;
@@ -68,6 +69,7 @@ class GameObject2 : public GameObject
 
 public:
 	virtual void init(BitMap* listimage);
-	virtual void Draw(HDC hdc, int height, int width);
+	virtual void Draw(HDC hdc, int height, int width,int i);
+	virtual void Reset();
 	
 };
